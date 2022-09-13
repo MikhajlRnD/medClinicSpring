@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ConfigurationApp {
 
-    @Bean
+/*    @Bean
     public ObjectMapper getObjectMapper(ObjectMapper objectMapper){
 
         return objectMapper;
-    }
+    }*/
 }

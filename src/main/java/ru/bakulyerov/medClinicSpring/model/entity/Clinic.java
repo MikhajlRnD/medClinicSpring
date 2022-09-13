@@ -22,7 +22,7 @@ public class Clinic {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "VARCHAR(255)")
     private UUID id;
-    private String clinic;
+    private String name;
     @ManyToMany(mappedBy = "clinics")
     private List<DoctorCard> doctorCards;
 
