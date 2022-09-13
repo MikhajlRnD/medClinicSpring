@@ -7,8 +7,8 @@ import java.time.LocalDate;
 @Data
 @MappedSuperclass
 public abstract class Human {
-    private String name;
-    private String patronymic;
-    private  String surName;
+    private String firstName;
+    private String middleName;
+    private  String lastName;
     private LocalDate dateOfBerth;
 }
