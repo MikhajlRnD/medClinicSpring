@@ -7,7 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.bakulyerov.medClinicSpring.model.DTO.CertificatesDTO;
 import ru.bakulyerov.medClinicSpring.model.entity.Certificates;
-import ru.bakulyerov.medClinicSpring.repository.CertificatesRepository;
+import ru.bakulyerov.medClinicSpring.service.EntityService;
 
 import java.util.UUID;
 
@@ -16,22 +16,22 @@ import java.util.UUID;
 public class CertifacateController {
 
     @Autowired
-    private CertificatesRepository repository;
+    private EntityService certificateService;
 
     @PostMapping
     public ResponseEntity<Certificates> save(@RequestBody CertificatesDTO certificates){
-
-        return ResponseEntity.ok(Certificates.builder().name(certificates.getName()).build());
+        certificateService.create(certificates);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{uuid}")
-    public ResponseEntity<Certificates> saveAll(@PathVariable UUID uuid){
-        return ResponseEntity.ok(repository.findById(uuid).get());
+    public ResponseEntity<Object> get(@PathVariable UUID uuid){
+        return ResponseEntity.ok(certificateService.getById(uuid));
     }
 
     @DeleteMapping
     public ResponseEntity<Void> delete(@RequestParam @Validated @NotNull UUID uuid){
-        repository.deleteById(uuid);
+        certificateService.delete(uuid);
         return ResponseEntity.ok().build();
     }
 

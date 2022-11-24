@@ -5,14 +5,14 @@ import ru.bakulyerov.medClinicSpring.model.entity.DoctorCard;
 import java.util.List;
 import java.util.UUID;
 
-public interface DoctorCardService {
-    void create(DoctorCard card);
+public interface EntityService<T, U> {
+    void create(T card);
 
-    void update(UUID id, DoctorCard card);
+    void update(UUID id, T card);
 
     void delete(UUID id);
 
-    DoctorCard getById(UUID id);
+    U getById(UUID id);
 
-    List<DoctorCard> getAll();
+    List<U> getAll();
 }
